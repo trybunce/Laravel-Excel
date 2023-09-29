@@ -44,6 +44,8 @@ class AfterImportJob implements ShouldQueue
     {
         $this->import = $import;
         $this->reader = $reader;
+        $this->connection = property_exists($import, 'connection') ? $import->connection : null;
+        $this->queue = property_exists($import, 'queue') ? $import->queue : null;
     }
 
     public function setInterval(int $interval)
